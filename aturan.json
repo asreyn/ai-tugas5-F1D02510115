@@ -1,0 +1,25 @@
+{
+  "judul": "Kelayakan dan Regulasi Pemasangan PLTS",
+  "batas": "Aturan ini merujuk pada regulasi PLTS Atap terbaru (Suryanesia), panduan komisioning off-grid (ESDM), dan standar perencanaan (Unram). Hasil ini hanya saran awal dan bukan merupakan keputusan teknis/izin resmi instansi terkait.",
+  "sumber": {
+    "S1": "PPSDM KEBTKE dan Ditjen EBTKE Lakukan Field Testing Commissioning Guideline PLTS Off-Grid, ESDM, https://www.esdm.go.id/en/berita-unit/human-resource-development-agency-emr/ppsdm-kebtke-dan-ditjen-ebtke-lakukan-field-testing-commissioning-guideline-plts-off-grid, diakses 14 Nov 2026",
+    "S2": "Perencanaan PLTS, Eprints Unram, https://eprints.unram.ac.id/9137/, diakses 14 Nov 2026",
+    "S3": "Panduan Aturan PLTS Atap Terbaru, Suryanesia, https://suryanesia.com/articles/panduan-aturan-plts-atap-terbaru, diakses 14 Nov 2026"
+  },
+  "pertanyaan": [
+    {"id": "P1", "fakta": "lokasi terpencil", "teks": "Apakah lokasi pemasangan terpencil dan belum ada jaringan listrik PLN?"},
+    {"id": "P2", "fakta": "menggunakan baterai", "teks": "Apakah sistem direncanakan menggunakan baterai cadangan?"},
+    {"id": "P3", "fakta": "tegangan baterai tidak stabil", "teks": "Saat uji coba lapangan, apakah tegangan baterai tidak stabil?"},
+    {"id": "P4", "fakta": "terhubung jaringan PLN", "teks": "Apakah sistem akan dihubungkan secara paralel dengan jaringan PLN?"},
+    {"id": "P5", "fakta": "dipasang di atap", "teks": "Apakah panel surya akan dipasang di atap bangunan?"},
+    {"id": "P6", "fakta": "kapasitas melebihi daya PLN", "teks": "Apakah total kapasitas panel (kWp) melebihi daya terpasang PLN di rumah/gedung?"},
+    {"id": "P7", "fakta": "intensitas matahari tinggi", "teks": "Apakah lokasi pemasangan terbukti memiliki intensitas matahari harian yang tinggi?"}
+  ],
+  "aturan": [
+    {"id": "R1", "jika": ["lokasi terpencil", "menggunakan baterai"], "mode": "atau", "maka": "sistem Off-Grid", "sumber": "S1"},
+    {"id": "R2", "jika": ["sistem Off-Grid", "tegangan baterai tidak stabil"], "mode": "dan", "maka": "komisioning baterai gagal", "sumber": "S1"},
+    {"id": "R3", "jika": ["terhubung jaringan PLN", "dipasang di atap"], "mode": "dan", "maka": "sistem On-Grid", "sumber": "S3"},
+    {"id": "R4", "jika": ["sistem On-Grid", "kapasitas melebihi daya PLN"], "mode": "dan", "maka": "pemasangan ditolak regulasi", "sumber": "S3"},
+    {"id": "R5", "jika": ["sistem On-Grid", "intensitas matahari tinggi"], "mode": "dan", "maka": "pemasangan layak secara teknis", "sumber": "S2"}
+  ]
+}
